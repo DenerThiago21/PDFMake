@@ -13,32 +13,6 @@
                 "mediacao": "Presencial",
                 "parecer": "123 - Válido até: 20/09/2020",
                 "portaria": "321 - Válido até: 20/09/2020"
-            },
-            {
-                "atoId": 2,
-                "modalidade": "Profissional",
-                "Curso": [
-                    "Enfermagem"
-                ],
-                "mediacao": "EAD",
-                "parecer": "123 - Válido até: 20/09/2020",
-                "portaria": "321 - Válido até: 20/09/2020"
-            }
-        ]
-    },
-    {
-        "instituicaoID": 2,
-        "instituicaoNome": "DEF",
-        "atos":[
-            {
-                "atoId": 1,
-                "modalidade": "Básico",
-                "Curso": [
-                    "Médio"
-                ],
-                "mediacao": "Presencial",
-                "parecer": "123 - Válido até: 20/09/2020",
-                "portaria": "321 - Válido até: 20/09/2020"
             }
         ]
     }
