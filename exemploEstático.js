@@ -98,16 +98,18 @@ const dd = {
           margin: [65, 25]
     }, 
     // rodapé
-    footer: {
-      columns: [
-        { 
-          text: [{text: 'Página 1 de 1', bold: true},
-                 {text: '\nEmitido pelo Sistema do Conselho Estadual de Educação em: xx/xx/xxxx xx:xx:xx'},
-                 {text: '\nUsuário: Dener Thiago Ancini'}]
-        }
-      ],
-      style: ['defaultStyle', 'footerStyle'],
-      margin: [0, 0, 65, 0]
+    footer: function(currentPage, pageCount) {
+      return {
+        columns: [
+          { 
+            text: [{text: 'Página '+currentPage.toString()+' de '+pageCount, bold: true},
+                   {text: '\nEmitido pelo Sistema do Conselho Estadual de Educação em: xx/xx/xxxx xx:xx:xx'},
+                   {text: '\nUsuário: Dener Thiago Ancini'}]
+          }
+        ],
+        style: ['defaultStyle', 'footerStyle'],
+        margin: [0, 0, 65, 0]
+      }
     },
     // conteúdo do report ... aqui é onde a tabela será criada
     content: [
