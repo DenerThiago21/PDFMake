@@ -63,8 +63,9 @@ function percorrer(obj) {
     }
     // ColSpan: mesclar colunas;
     // text está vazio, para gerar um espaço entre as instituições
-    row.push([ {text: '', colSpan: 5} ])
+    row.push([ {text: '', colSpan: 5}]);
   }
+  console.log(row);
 }
 
 /**
@@ -135,7 +136,7 @@ const dd = {
             bold: true
         },
         defaultStyle: {
-          fontSize: 12,
+          fontSize: 10,
           font: 'Times'
 
         },  
@@ -154,6 +155,7 @@ const dd = {
 }
 
 //criação e saida do arquivo em PDF
+console.log(dd);
 const pdfDoc = printer.createPdfKitDocument(dd);
 pdfDoc.pipe(fs.createWriteStream('output.pdf'));
 pdfDoc.end();
