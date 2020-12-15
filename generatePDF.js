@@ -1,3 +1,5 @@
+const { format } = require('date-fns');
+
 const fs = require('fs');
 const PDFprinter = require('pdfmake');
 
@@ -5,6 +7,7 @@ const SinteticoReport = require('./SinteticoReport');
 const base = require('./BaseReport');
 
 const oBase = new base();
+
 const oSinteticoReport = new SinteticoReport();
 
 const fonts = {
@@ -27,9 +30,11 @@ const printer = new PDFprinter(fonts);
 //const docDefinition = oSinteticoReport.joinModules();
 //console.log(oSinteticoReport.joinModules().footer.columns[0]);
 const filters = "cidade: Ibirama";
+const user    = "Marcus Cirillo";
+const acesso = format(new Date(), 'dd/MM/yyyy hh:mm:ss');
 //const dd = oBase.headers(filters);
-const dd = oSinteticoReport.joinModules();
-console.log(dd);
+const dd = oSinteticoReport.joinModules(user, filters, acesso);
+//console.log(dd);
 const pdfdoc = printer.createPdfKitDocument(dd);
 pdfdoc.pipe(fs.createWriteStream('pdfmodular.pdf'));
 pdfdoc.end();

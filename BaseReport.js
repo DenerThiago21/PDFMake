@@ -56,11 +56,11 @@ class BaseReport {
     return count;
   }
   
-  footers (usuario) {
+  footers (usuario, acesso) {
     let footer = {columns: [
                 {
-                  text: [{text: this.Pagefooter},
-                  {text: '\nEmitido pelo OEB em: xx/xx/xxxx xx:xx:xx'},
+                  text: [{text: 'página x de y'},
+                  {text: `\nEmitido pelo OEB em: ${acesso}`},
                   {text: `\nusuario: ${usuario}`}]
                 }
       ],

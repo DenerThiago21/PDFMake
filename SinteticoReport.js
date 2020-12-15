@@ -5,8 +5,6 @@ const db = JSON.parse(fs.readFileSync('./db/data copy.json', 'utf8'));
 
 const base = new BaseReport();
 
-let row = [];
-
 class SinteticoReport {
     
     headerSintetico() {
@@ -19,7 +17,8 @@ class SinteticoReport {
         return headers;
     }
 
-    percorrer(db) {
+    bodyReport(db) {
+        let row = [];
         row.push(this.headerSintetico());
         //row.push(this.headerSintetico);
         for(let i in db) {
@@ -45,27 +44,17 @@ class SinteticoReport {
             // text está vazio, para gerar um espaço entre as instituições
             row.push([ {text: '', colSpan: 5}]);
         }
-        console.log(row);
-        return row;
-    }
-
-    bodyReport(){
-        let row = [];
-        row.push(this.headerSintetico);
-
-        row.push(this.percorrer(db));
-
         //console.log(row);
         return row;
     }
 
-    joinModules() {
-        const filters = 'cidade: Ibirama, Curso: Enfermagem';
-        const user    = 'Marcus Cirillo';
+    joinModules(user, filters, acesso) {
+        // const filters = 'cidade: Ibirama, Curso: Enfermagem';
+        // const user    = 'Marcus Cirillo';
         
         const conf   = base.pageConfig();
         const header = base.headers(filters);
-        const footer = base.footers(user);
+        const footer = base.footers(user, acesso);
 
         const data = {
             pageSize: conf.pageSize,
@@ -84,7 +73,7 @@ class SinteticoReport {
                         // tamanho das colunas onde '*' -> é relativo, será dividio igualmente entre as demais colunas
                         widths: [ 100, '*', 100, '*', '*' ],     
                         // body é onde a tabela é montada, aqui onde chamamos o array row, contendo a tabela que será renderizada
-                        body: this.percorrer(db),
+                        body: this.bodyReport(db),
                     },
                     style: 'defaultStyle',
                 }
